@@ -1,0 +1,19 @@
+{
+  "name": "udacity-restaurant-reviewer",
+  "version": "1.0.0",
+  "description": "This is the 3rd project for the Udacity Senior Font End Developer Nanodegree",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heathshurtleff/udacity-restaurant-reviewer.git"
+  },
+  "author": "Heath Shurtleff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heathshurtleff/udacity-restaurant-reviewer/issues"
+  },
+  "homepage": "https://github.com/heathshurtleff/udacity-restaurant-reviewer#readme"
+}
