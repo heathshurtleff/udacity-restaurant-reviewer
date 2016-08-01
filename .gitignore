@@ -2,6 +2,8 @@ dist/
 
 node_modules/
 npm.log
+npm-debug.log
+*.log
 
 .DS_Store
 ._*

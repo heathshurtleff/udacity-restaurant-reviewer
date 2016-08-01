@@ -4,7 +4,13 @@
   "description": "This is the 3rd project for the Udacity Senior Font End Developer Nanodegree",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "open:src": "babel-node tools/devServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter spec tools/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- -watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,44 @@
   "bugs": {
     "url": "https://github.com/heathshurtleff/udacity-restaurant-reviewer/issues"
   },
-  "homepage": "https://github.com/heathshurtleff/udacity-restaurant-reviewer#readme"
+  "homepage": "https://github.com/heathshurtleff/udacity-restaurant-reviewer#readme",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-display-name": "^2.0.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-register": "^6.11.6",
+    "colors": "^1.1.2",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.2.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-react": "^5.2.2",
+    "eslint-watch": "^2.1.14",
+    "eventsource-polyfill": "^0.9.6",
+    "expect": "^1.20.2",
+    "jsdom": "^9.4.1",
+    "mocha": "^3.0.0",
+    "node-sass": "^3.8.0",
+    "npm-run-all": "^2.3.0",
+    "open": "0.0.5",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "jquery": "^3.1.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.1",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2"
+  }
 }
