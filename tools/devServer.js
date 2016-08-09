@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
+import Zomato from '../src/api/zomato';
 
 /*eslint-disable no-console*/
 
@@ -17,9 +18,11 @@ app.use(require('webpack-dev-middleware')(complier, {
 
 app.use(require('webpack-hot-middleware')(complier));
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '../src/index.html'));
 });
+
+app.get('/api/zomato', Zomato.getDefaultRestaurants);
 
 app.listen(port, function(err) {
 	if(err) {

@@ -5,9 +5,11 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {Router, browserHistory} from 'react-router';
 import routes from './routes';
+import {loadDefaultRestaurants} from './actions/restaurantActions';
 import './styles/main.scss';
 
 const store = configureStore();
+store.dispatch(loadDefaultRestaurants());
 
 render(
 	<Provider store={store}>

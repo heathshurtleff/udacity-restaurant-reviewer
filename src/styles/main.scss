@@ -1,2 +1,22 @@
 $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap";
+$textGrey: #444;
+
+.restaurant-tile {
+	padding: 15px;
+	img {
+		width: 100%;
+		opacity: .8;
+	}
+	.restaurant-content {
+		display: block;
+		color: $textGrey;
+		cursor: pointer;
+		&:hover {
+			text-decoration: none;
+			img {
+				opacity: 1;
+			}
+		}
+	}
+}
