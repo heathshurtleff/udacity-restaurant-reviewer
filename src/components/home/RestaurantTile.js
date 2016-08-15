@@ -5,7 +5,7 @@ const RestaurantTile = ({restaurant}) => {
 		<div className="col-sm-4 restaurant-tile">
 			<a className="restaurant-content">
 				<h2>{restaurant.name} <span></span></h2>
-				<img src={restaurant.thumb} alt={restaurant.name} />
+				<img src={restaurant.thumb === '' ? require('../../images/default-listing-image.gif') : restaurant.thumb} alt={restaurant.name} />
 				<div className="restaurant-info">
 					<h3>Location:</h3>
 					<div className="restaurant-address">{restaurant.location.address}</div>

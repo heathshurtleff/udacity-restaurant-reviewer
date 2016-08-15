@@ -9,7 +9,6 @@ import {loadDefaultRestaurants} from './actions/restaurantActions';
 import './styles/main.scss';
 
 const store = configureStore();
-store.dispatch(loadDefaultRestaurants());
 
 render(
 	<Provider store={store}>

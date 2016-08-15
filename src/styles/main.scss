@@ -1,12 +1,33 @@
 $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 @import "~bootstrap-sass/assets/stylesheets/_bootstrap";
 $textGrey: #444;
+$linkBlue: #0a71b2;
+
+
+.jumbotron {
+	p {
+		padding-top: 15px;
+		margin: 0;
+		.geolocate-link {
+			display: inline;
+			padding-left: 10px;
+		}
+		a {
+			cursor: pointer;
+			color: $linkBlue;
+			&:hover, &:active, &:focus {
+				text-decoration: none;
+				color: darken($linkBlue, 15);
+			}
+		}
+	}
+}
 
 .restaurant-tile {
 	padding: 15px;
 	img {
 		width: 100%;
-		opacity: .8;
+		opacity: .9;
 	}
 	.restaurant-content {
 		display: block;

@@ -8,16 +8,28 @@ export function loadRestaurantsSuccess(restaurants) {
 export function loadDefaultRestaurants() {
 	return function(dispatch) {
 		http.get('/api/zomato', (res) => {
-			let restaurants = '';
-
-			res.on('data', (d) => {
-				restaurants += d;
-			});
-
-			res.on('end', () => {
-				let restaurantsJson = JSON.parse(restaurants);
-				dispatch(loadRestaurantsSuccess(restaurantsJson));
-			});
+			handleIncomingRestaurants(dispatch, res);
 		});
 	};
+}
+
+export function loadRestrauntsByLocation(coords) {
+	return function(dispatch) {
+		http.get('/api/zomato/location/' + coords, (res) => {
+			handleIncomingRestaurants(dispatch, res);
+		});
+	};
+}
+
+function handleIncomingRestaurants(dispatch, res) {
+	let restaurants = '';
+
+	res.on('data', (d) => {
+		restaurants += d;
+	});
+
+	res.on('end', () => {
+		let restaurantsJson = JSON.parse(restaurants);
+		dispatch(loadRestaurantsSuccess(restaurantsJson));
+	});
 }

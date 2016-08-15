@@ -24,20 +24,26 @@ class Zomato {
 				response.send(data);
 			});
 		});
-		// return new Promise((resolve, reject) => {
-		// 	https.get(reqOpts, (res) => {
-		// 		let data = '';
-		// 		res.on('data', (d) => {
-		// 			data += d;
-		// 		});
-		// 		res.on('end', () => {
-		// 			let restaurantsJson = JSON.parse(data);
-		// 			resolve(restaurantsJson);
-		// 		});
-		// 	}).on('error', (e) => {
-		// 		reject(e);
-		// 	});
-		// });
+	}
+	static getDefaultRestaurantsByLocation(request, response) {
+		let reqOpts = {
+			hostname: HOSTNAME,
+			method: 'GET',
+			path: PATH_BASE + 'search',
+			headers: HEADERS
+		};
+
+		let coords = request.params.coords.split(',');
+		reqOpts.path += '?lat=' + coords[0].substring(0, 9) + '&lon=' + coords[1].substring(0, 9);
+		https.get(reqOpts, (res) => {
+			let data = '';
+			res.on('data', (d) => {
+				data += d;
+			});
+			res.on('end', () => {
+				response.send(data);
+			});
+		});
 	}
 }
 

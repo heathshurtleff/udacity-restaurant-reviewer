@@ -23,6 +23,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/zomato', Zomato.getDefaultRestaurants);
+app.get('/api/zomato/location/:coords', Zomato.getDefaultRestaurantsByLocation);
 
 app.listen(port, function(err) {
 	if(err) {
