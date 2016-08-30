@@ -38,8 +38,16 @@ class HomePage extends Component {
 				<div className="jumbotron">
 					<h1>Hungry? Let&#39;s find you something to eat.</h1>
 					<p>
-						<label htmlFor="Zip">Enter Zip:</label> <input type="text" name="Zip" onBlur={this.getRestaurantsByZipLocation} />
-						{geoAvailable ? <GeolocateLink getRestaurantsByGeoLocation={this.getRestaurantsByGeoLocation} /> : null}
+						<div className="location-finder">
+							<label htmlFor="Zip">Enter Zip: </label>
+							<div className="input-group">
+								<input className="zip-input form-control" type="text" name="Zip" onBlur={this.getRestaurantsByZipLocation} />
+								<span className="input-group-btn">
+									<button className="btn btn-default" type="button"><i className="glyphicon glyphicon-search"></i></button>
+								</span>
+							</div>
+							{geoAvailable ? <GeolocateLink getRestaurantsByGeoLocation={this.getRestaurantsByGeoLocation} /> : null}
+						</div>
 					</p>
 					{console.log(restaurants)}
 				</div>
