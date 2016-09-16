@@ -4,12 +4,14 @@ import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
 import Zomato from '../src/api/zomato';
+import DashboardPlugin from 'webpack-dashboard/plugin';
 
 /*eslint-disable no-console*/
 
 const port = 8800;
 const app = express();
 const complier = webpack(config);
+complier.apply(new DashboardPlugin());
 
 app.use(require('webpack-dev-middleware')(complier, {
 	noInfo: true,

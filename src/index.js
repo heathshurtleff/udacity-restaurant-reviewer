@@ -7,6 +7,7 @@ import {Router, browserHistory} from 'react-router';
 import routes from './routes';
 import {loadDefaultRestaurants} from './actions/restaurantActions';
 import './styles/main.scss';
+import jQuery from 'jquery';
 
 const store = configureStore();
 

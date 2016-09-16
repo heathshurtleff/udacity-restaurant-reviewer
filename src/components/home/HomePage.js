@@ -14,7 +14,8 @@ class HomePage extends Component {
 	}
 
 	getRestaurantsByZipLocation(e) {
-		let zipValue = e.target.value;
+		e.preventDefault();
+		let zipValue = $('#Zip').val();
 	}
 
 	getRestaurantsByGeoLocation(e) {
@@ -37,18 +38,20 @@ class HomePage extends Component {
 			<div className="container-fluid">
 				<div className="jumbotron">
 					<h1>Hungry? Let&#39;s find you something to eat.</h1>
-					<p>
-						<div className="location-finder">
-							<label htmlFor="Zip">Enter Zip: </label>
-							<div className="input-group">
-								<input className="zip-input form-control" type="text" name="Zip" onBlur={this.getRestaurantsByZipLocation} />
-								<span className="input-group-btn">
-									<button className="btn btn-default" type="button"><i className="glyphicon glyphicon-search"></i></button>
-								</span>
+					<form onSubmit={this.getRestaurantsByZipLocation}>
+						<p>
+							<div className="location-finder form-group">
+								<label htmlFor="Zip">Enter Zip: </label>
+								<div className="input-group">
+									<input className="zip-input form-control" type="text" name="Zip" id="Zip"  />
+									<span className="input-group-btn">
+										<button className="btn btn-default" type="button" onClick={this.getRestaurantsByZipLocation}><i className="glyphicon glyphicon-search"></i></button>
+									</span>
+								</div>
+								{geoAvailable ? <GeolocateLink getRestaurantsByGeoLocation={this.getRestaurantsByGeoLocation} /> : null}
 							</div>
-							{geoAvailable ? <GeolocateLink getRestaurantsByGeoLocation={this.getRestaurantsByGeoLocation} /> : null}
-						</div>
-					</p>
+						</p>
+					</form>
 					{console.log(restaurants)}
 				</div>
 				{restaurants.restaurants.map(restaurant =>
